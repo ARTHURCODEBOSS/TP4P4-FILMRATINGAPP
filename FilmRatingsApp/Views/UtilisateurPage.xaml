@@ -23,7 +23,7 @@
         <TextBlock x:Name="lblMail" Text="Mail" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="txtMobile"/>
         <TextBox x:Name="txtMail" Text="{Binding UtilisateurSearch.Mail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="400" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="lblMail"/>
         <TextBlock x:Name="lblPassword" Text="Password" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="txtMail"/>
-        <PasswordBox x:Name="txtPassword" Password="{Binding UtilisateurSearch.Pwd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="lblPassword"/>
+        <PasswordBox x:Name="txtPassword" Password="{Binding UtilisateurSearch.Pwd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="lblPassword" PasswordChanged="txtPassword_PasswordChanged"/>
         <TextBlock x:Name="lblAdresse" Text="Adresse (Rue, CP, Ville, Pays)" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="txtPassword"/>
         <TextBox x:Name="txtRue" Text="{Binding UtilisateurSearch.Rue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="400" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="lblAdresse"/>
         <TextBox x:Name="txtCP" Text="{Binding UtilisateurSearch.CodePostal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="txtRue"/>

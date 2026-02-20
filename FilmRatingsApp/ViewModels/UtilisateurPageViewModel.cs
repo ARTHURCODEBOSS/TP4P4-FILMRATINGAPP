@@ -21,6 +21,7 @@ namespace FilmRatingsApp.ViewModels
 
         public UtilisateurPageViewModel()
         {
+            UtilisateurSearch = new Utilisateur();
             BtnSearchUtilisateurCommand = new RelayCommand(RechercheUtilisateur);
             BtnModifyUtilisateurCommand = new RelayCommand(ModifierUtilisateur);
             BtnClearUtilisateurCommand = new RelayCommand(ClearUtilisateur);
@@ -96,6 +97,7 @@ namespace FilmRatingsApp.ViewModels
             UtilisateurSearch = null;
 
         }
+
 
         public async void AjouterUtilisateur()
         {

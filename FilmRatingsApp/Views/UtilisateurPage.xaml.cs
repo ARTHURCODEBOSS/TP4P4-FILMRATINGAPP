@@ -31,5 +31,12 @@ namespace FilmRatingsApp.Views
             UtilisateurPageViewModel uvm = new UtilisateurPageViewModel();
             this.DataContext = uvm;
         }
+        private void txtPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (this.DataContext is UtilisateurPageViewModel uvm)
+            {
+                uvm.UtilisateurSearch.Pwd = ((PasswordBox)sender).Password;
+            }
+        }
     }
 }
