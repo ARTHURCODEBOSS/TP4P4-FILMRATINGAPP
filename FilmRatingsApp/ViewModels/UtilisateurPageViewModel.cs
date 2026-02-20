@@ -15,10 +15,16 @@ namespace FilmRatingsApp.ViewModels
     {
         public IRelayCommand BtnSearchUtilisateurCommand { get; }
         public IRelayCommand BtnModifyUtilisateurCommand { get; }
-        public UtilisateurPageViewModel() 
+        public IRelayCommand BtnClearUtilisateurCommand { get; }
+        public IRelayCommand BtnAddUtilisateurCommand { get; }
+
+
+        public UtilisateurPageViewModel()
         {
             BtnSearchUtilisateurCommand = new RelayCommand(RechercheUtilisateur);
             BtnModifyUtilisateurCommand = new RelayCommand(ModifierUtilisateur);
+            BtnClearUtilisateurCommand = new RelayCommand(ClearUtilisateur);
+            BtnAddUtilisateurCommand = new RelayCommand(AjouterUtilisateur);
             WSService = new WSService();
         }
 
@@ -35,7 +41,7 @@ namespace FilmRatingsApp.ViewModels
         public Utilisateur UtilisateurSearch
         {
             get { return utilisateurSearch; }
-            set { SetProperty(ref utilisateurSearch, value);}
+            set { SetProperty(ref utilisateurSearch, value); }
         }
 
 
@@ -49,8 +55,8 @@ namespace FilmRatingsApp.ViewModels
 
         public async void RechercheUtilisateur()
         {
-            Utilisateur utilisateur = await WSService.GetUtilisateurByEmailAsync(SearchMail); 
-            
+            Utilisateur utilisateur = await WSService.GetUtilisateurByEmailAsync(SearchMail);
+
             if (utilisateur != null)
             {
                 UtilisateurSearch = utilisateur;
@@ -84,5 +90,31 @@ namespace FilmRatingsApp.ViewModels
             }
         }
 
+        public void ClearUtilisateur()
+        {
+            SearchMail = string.Empty;
+            UtilisateurSearch = null;
+
+        }
+
+        public async void AjouterUtilisateur()
+        {
+               Utilisateur user = await WSService.PostUtilisateurAsync(UtilisateurSearch);
+            if (user != null)
+            {
+                ContentDialog dialog = new ContentDialog
+                {
+                    Title = "Information",
+                    Content = "Utilisateur ajouté !",
+                    CloseButtonText = "Ok",
+                    XamlRoot = App.MainRoot.XamlRoot
+                };
+                await dialog.ShowAsync();
+            }
+            else
+            {
+                SearchMail = "Erreur lors de l'ajout de l'utilisateur";
+            }
+        }
     }
 }

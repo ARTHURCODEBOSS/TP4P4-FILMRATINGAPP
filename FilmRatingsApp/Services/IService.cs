@@ -11,5 +11,6 @@ namespace FilmRatingsApp.Services
     {
         Task<Utilisateur> GetUtilisateurByEmailAsync(string email);
         Task<bool> PutUtilisateurAsync(Utilisateur utilisateur);
+        Task<Utilisateur> PostUtilisateurAsync(Utilisateur utilisateur);
     }
 }

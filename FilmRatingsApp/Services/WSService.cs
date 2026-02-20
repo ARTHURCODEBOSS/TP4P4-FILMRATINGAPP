@@ -53,5 +53,17 @@ namespace FilmRatingsApp.Services
                 return false;
             }
         }
+
+        public async Task<Utilisateur> PostUtilisateurAsync(Utilisateur utilisateur)
+        {
+            try
+            {
+                return await Client.PostAsJsonAsync<Utilisateur>("utilisateur", utilisateur).Result.Content.ReadFromJsonAsync<Utilisateur>();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }
