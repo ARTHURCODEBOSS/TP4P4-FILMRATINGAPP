@@ -1,4 +1,5 @@
 ﻿using FilmRatingsApp.Models;
+using Microsoft.WindowsAppSDK.Runtime.Packages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,19 @@ namespace FilmRatingsApp.Services
             catch (Exception ex)
             {
                 return null;
+            }
+        }
+
+        public async Task<bool> PutUtilisateurAsync(Utilisateur utilisateur)
+        {
+            try
+            {
+                var response = await Client.PutAsJsonAsync($"utilisateurs/{utilisateur.UtilisateurId}", utilisateur);
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }

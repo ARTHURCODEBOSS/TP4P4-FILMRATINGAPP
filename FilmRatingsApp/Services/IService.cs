@@ -10,5 +10,6 @@ namespace FilmRatingsApp.Services
     public interface IService
     {
         Task<Utilisateur> GetUtilisateurByEmailAsync(string email);
+        Task<bool> PutUtilisateurAsync(Utilisateur utilisateur);
     }
 }
